@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    
+    srand(static_cast<unsigned int>(time(0)));
+    int random_number = rand() % 100 + 1; 
+
+   string user_name;
+    int guess;
+    int chances = 0;
+    const int max_chances = 10;
+    int points = 10;
+
+    cout << "Enter your name: ";
+    cin >> user_name;
+
+    cout << "Welcome, " << user_name << "! Let's play a number guessing game." << endl;
+    cout << "I have chosen a number between 1 and 100. You have " << max_chances << " chances to guess it." << endl;
+
+    while (chances < max_chances) {
+        cout << "Enter your guess: ";
+        cin >> guess;
+        chances++;
+
+        if (guess < random_number) {
+            cout << "Higher!" << endl;
+        } else if (guess > random_number) {
+            cout << "Lower!" << endl;
+        } else {
+            cout << "Congratulations, " << user_name << "! You guessed the correct number in " << chances << " chances." << endl;
+            cout << "Your score is: " << points << " points." << endl;
+            return 0;
+        }
+
+        points = 10 - chances;
+    }
+
+    cout << "Sorry, " << user_name << ". You've used all your chances. The correct number was " << random_number << "." << endl;
+    cout << "Your score is: 0 points." << endl;
+
+    return 0;
+}
