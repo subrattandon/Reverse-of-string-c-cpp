@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter a word or phrase: ";
+    getline(cin, input);
+
+    
+    int left = 0;
+    int right = input.length() - 1;
+
+    
+    bool isPalindrome = true;
+
+    while (left < right) {
+        
+        while (left < right && !isalnum(input[left])) {
+            ++left;
+        }
+        
+        while (left < right && !isalnum(input[right])) {
+            --right;
+        }
+        
+        
+        if (tolower(input[left]) != tolower(input[right])) {
+            isPalindrome = false;
+            break;
+        }
+        ++left;
+        --right;
+    }
+
+    if (isPalindrome) {
+        cout << "\"" << input << "\" is a palindrome." << endl;
+    } else {
+        cout << "\"" << input << "\" is not a palindrome." << endl;
+    }
+
+    return 0;
+}
