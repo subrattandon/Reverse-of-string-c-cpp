@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    string userName;
+    string userChoice;
+    string computerChoice;
+    string result;
+
+    
+    string quote = "Believe you can and you're halfway there.";
+
+   
+    string choices[3] = {"rock", "paper", "scissors"};
+
+    
+    srand(time(0));
+
+    
+    cout << "Enter your name: ";
+    getline(cin, userName);
+
+    
+    cout << quote << endl;
+
+    
+    cout << "Enter rock, paper, or scissors: ";
+    cin >> userChoice;
+
+   
+    computerChoice = choices[rand() % 3];
+    cout << "Computer chose: " << computerChoice << endl;
+
+   
+    if (userChoice == computerChoice) {
+        result = "It's a tie!";
+    } else if ((userChoice == "rock" && computerChoice == "scissors") ||
+               (userChoice == "paper" && computerChoice == "rock") ||
+               (userChoice == "scissors" && computerChoice == "paper")) {
+        result = userName + " wins!";
+    } else {
+        result = "Computer wins!";
+    }
+
+    
+    cout << result << endl;
+
+    return 0;
+}
